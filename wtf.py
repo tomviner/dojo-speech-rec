@@ -6,7 +6,7 @@ def rules():
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("Speak clearly")
-        audio = r.listen(source)
+        audio = r.listen(source, phrase_time_limit=5)
 
     try:
         print("Sphinx thinks you said " + r.recognize_sphinx(audio))
