@@ -5,6 +5,8 @@ from urllib.parse import quote_plus
 
 import speech_recognition as sr
 
+from search import get_image_url
+
 
 def act_on_will_of_people(input_text):
     respond(input_text)
@@ -12,12 +14,13 @@ def act_on_will_of_people(input_text):
 
 
 def say_will_of_people(text):
-    respond('Did you mean: ' + text + '?')
+    respond(f'Did you mean: {text}?')
     hear()
-    respond(text + ' means ' + text)
-    webbrowser.open_new(
-        f"https://www.google.com/search?q={quote_plus(text)}&tbm=isch"
-    )
+    respond(f'{text} means {text}! And weve made a success of it')
+
+
+    url = get_image_url(text)
+    webbrowser.open_new(url)
 
 
 def respond(message):
